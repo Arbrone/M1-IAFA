@@ -1,0 +1,1 @@
+docker create -it -v PATH:/home/thomas/Workspace/cours/ALG --workdir /workspace --name scip scipoptsuite/scipoptsuite:7.0.2 scip

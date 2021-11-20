@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="tp_mcdc" version="4">
+  <OBJECT>
+    <ID name="tp_mcdc" mc="Standard.Package" uid="9c057a3a-2cbf-4276-ad5b-5d838105a029"/>
+    <PID name="TP_MCDC" mc="Standard.Project" uid="5ee48191-5e38-4079-890d-47e64ffd5d6a"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[tp_mcdc]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Package" mc="Standard.Package" uid="c7e01b0a-0fa6-4dc6-853c-112e3f809869"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

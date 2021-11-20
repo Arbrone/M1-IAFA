@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="TP_MCDC" version="4">
+  <OBJECT>
+    <ID name="TP_MCDC" mc="Infrastructure.DiagramSet" uid="4d885ede-fdba-4707-87ff-fbc410e4fa4c"/>
+    <PID name="TP_MCDC" mc="Standard.Project" uid="5ee48191-5e38-4079-890d-47e64ffd5d6a"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[TP_MCDC]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

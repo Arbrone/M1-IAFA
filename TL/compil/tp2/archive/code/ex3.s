@@ -1,0 +1,25 @@
+@ Type exercise 3 here
+	SETI R0, #0
+	SETI R1, #1
+	SETI R4, #0
+	SETI R5, #0
+	@ R2 = width && R3 = height
+	INVOKE 1, 2, 3
+LINE:
+	GOTO_GE END, R4, R3
+	GOTO COLUMN
+	GOTO LINE
+
+TRANS:
+	MUL R5, R5, R0
+	ADD R4, R4, R1
+	GOTO LINE
+
+COLUMN:
+	GOTO_GE TRANS, R5, R2
+	INVOKE 3, 4, 5
+	INVOKE 4, 1, 0
+	ADD R5, R5, R1
+	GOTO COLUMN
+END:
+	STOP

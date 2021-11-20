@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="__Z9JsDi6Eey_P60LIh_4TQ" name="tp_mcdc">
+  <eAnnotations xmi:id="__Z9JsTi6Eey_P60LIh_4TQ" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="__Z9Jsji6Eey_P60LIh_4TQ" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="__Z9Jszi6Eey_P60LIh_4TQ" value="3.0.0"/>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Package" xmi:id="__Z9JtDi6Eey_P60LIh_4TQ" name="Package">
+    <packagedElement xmi:type="uml:Class" xmi:id="__Z9JtTi6Eey_P60LIh_4TQ" name="Membre">
+      <ownedComment xmi:id="__Z9Jtji6Eey_P60LIh_4TQ">
+        <body>&lt;Enter note text here></body>
+      </ownedComment>
+      <ownedAttribute xmi:id="__Z9Jtzi6Eey_P60LIh_4TQ" name="id" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9JuDi6Eey_P60LIh_4TQ" name="pseudo" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9JuTi6Eey_P60LIh_4TQ" name="adresse" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9Juji6Eey_P60LIh_4TQ" name="avis_cond" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9Juzi6Eey_P60LIh_4TQ" name="avis_pass" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__Z9JvDi6Eey_P60LIh_4TQ" name="Passager">
+      <generalization xmi:id="__Z9JvTi6Eey_P60LIh_4TQ" general="__Z9JtTi6Eey_P60LIh_4TQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__Z9Jvji6Eey_P60LIh_4TQ" memberEnd="__Z9Jvzi6Eey_P60LIh_4TQ __Z9JwTi6Eey_P60LIh_4TQ">
+      <ownedEnd xmi:id="__Z9Jvzi6Eey_P60LIh_4TQ" name="offre" visibility="public" type="__Z9xDTi6Eey_P60LIh_4TQ" association="__Z9Jvji6Eey_P60LIh_4TQ">
+        <ownedComment xmi:id="__Z9JwDi6Eey_P60LIh_4TQ">
+          <body>&lt;Enter note text here></body>
+        </ownedComment>
+      </ownedEnd>
+      <ownedEnd xmi:id="__Z9JwTi6Eey_P60LIh_4TQ" visibility="public" type="__Z9JvDi6Eey_P60LIh_4TQ" association="__Z9Jvji6Eey_P60LIh_4TQ">
+        <ownedComment xmi:id="__Z9Jwji6Eey_P60LIh_4TQ">
+          <body>&lt;Enter note text here></body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Z9Jwzi6Eey_P60LIh_4TQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9JxDi6Eey_P60LIh_4TQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__Z9JxTi6Eey_P60LIh_4TQ" memberEnd="__Z9Jxji6Eey_P60LIh_4TQ __Z9Jxzi6Eey_P60LIh_4TQ">
+      <ownedEnd xmi:id="__Z9Jxji6Eey_P60LIh_4TQ" name="avis" visibility="public" type="__Z9xCji6Eey_P60LIh_4TQ" association="__Z9JxTi6Eey_P60LIh_4TQ"/>
+      <ownedEnd xmi:id="__Z9Jxzi6Eey_P60LIh_4TQ" visibility="public" type="__Z9JvDi6Eey_P60LIh_4TQ" association="__Z9JxTi6Eey_P60LIh_4TQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Z9JyDi6Eey_P60LIh_4TQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9JyTi6Eey_P60LIh_4TQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__Z9Jyji6Eey_P60LIh_4TQ" name="Conducteur">
+      <generalization xmi:id="__Z9Jyzi6Eey_P60LIh_4TQ" general="__Z9JtTi6Eey_P60LIh_4TQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__Z9JzDi6Eey_P60LIh_4TQ" memberEnd="__Z9JzTi6Eey_P60LIh_4TQ __Z9Jzji6Eey_P60LIh_4TQ">
+      <ownedEnd xmi:id="__Z9JzTi6Eey_P60LIh_4TQ" name="trajet" visibility="public" type="__Z9J1Di6Eey_P60LIh_4TQ" association="__Z9JzDi6Eey_P60LIh_4TQ"/>
+      <ownedEnd xmi:id="__Z9Jzji6Eey_P60LIh_4TQ" visibility="public" type="__Z9Jyji6Eey_P60LIh_4TQ" association="__Z9JzDi6Eey_P60LIh_4TQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__Z9Jzzi6Eey_P60LIh_4TQ" memberEnd="__Z9J0Di6Eey_P60LIh_4TQ __Z9J0Ti6Eey_P60LIh_4TQ">
+      <ownedEnd xmi:id="__Z9J0Di6Eey_P60LIh_4TQ" visibility="public" type="__Z9xCji6Eey_P60LIh_4TQ" association="__Z9Jzzi6Eey_P60LIh_4TQ"/>
+      <ownedEnd xmi:id="__Z9J0Ti6Eey_P60LIh_4TQ" name="conducteur" visibility="public" type="__Z9Jyji6Eey_P60LIh_4TQ" association="__Z9Jzzi6Eey_P60LIh_4TQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Z9J0ji6Eey_P60LIh_4TQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9J0zi6Eey_P60LIh_4TQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__Z9J1Di6Eey_P60LIh_4TQ" name="Trajet">
+      <ownedAttribute xmi:id="__Z9J1Ti6Eey_P60LIh_4TQ" name="origine" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9J1ji6Eey_P60LIh_4TQ" name="destination" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9J1zi6Eey_P60LIh_4TQ" name="date_aller" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9J2Di6Eey_P60LIh_4TQ" name="horaire_aller" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9J2Ti6Eey_P60LIh_4TQ" name="aller-retour" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9J2ji6Eey_P60LIh_4TQ" name="date_retour" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9J2zi6Eey_P60LIh_4TQ" name="horaire_retour" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__Z9J3Di6Eey_P60LIh_4TQ" memberEnd="__Z9J3Ti6Eey_P60LIh_4TQ __Z9J4Di6Eey_P60LIh_4TQ">
+      <ownedEnd xmi:id="__Z9J3Ti6Eey_P60LIh_4TQ" visibility="public" type="__Z9xDTi6Eey_P60LIh_4TQ" association="__Z9J3Di6Eey_P60LIh_4TQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Z9J3ji6Eey_P60LIh_4TQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9J3zi6Eey_P60LIh_4TQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="__Z9J4Di6Eey_P60LIh_4TQ" name="trajet" visibility="public" type="__Z9J1Di6Eey_P60LIh_4TQ" aggregation="composite" association="__Z9J3Di6Eey_P60LIh_4TQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Z9J4Ti6Eey_P60LIh_4TQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9J4ji6Eey_P60LIh_4TQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__Z9J4zi6Eey_P60LIh_4TQ" name="CU">
+      <packagedElement xmi:type="uml:Actor" xmi:id="__Z9J5Di6Eey_P60LIh_4TQ" name="Passager"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="__Z9J5Ti6Eey_P60LIh_4TQ" memberEnd="__Z9J5ji6Eey_P60LIh_4TQ __Z9J6Di6Eey_P60LIh_4TQ" navigableOwnedEnd="__Z9J5ji6Eey_P60LIh_4TQ">
+        <ownedEnd xmi:id="__Z9J5ji6Eey_P60LIh_4TQ" visibility="public" type="__Z9wzTi6Eey_P60LIh_4TQ" association="__Z9J5Ti6Eey_P60LIh_4TQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9J5zi6Eey_P60LIh_4TQ"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="__Z9J6Di6Eey_P60LIh_4TQ" visibility="public" type="__Z9J5Di6Eey_P60LIh_4TQ" association="__Z9J5Ti6Eey_P60LIh_4TQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9J6Ti6Eey_P60LIh_4TQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9wwDi6Eey_P60LIh_4TQ" name="S'identifier">
+        <ownedComment xmi:id="__Z9wwTi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9wwji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9wwzi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9wxDi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9wxTi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Actor" xmi:id="__Z9wxji6Eey_P60LIh_4TQ" name="conducteur">
+        <generalization xmi:id="__Z9wxzi6Eey_P60LIh_4TQ" general="__Z9xBDi6Eey_P60LIh_4TQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="__Z9wyDi6Eey_P60LIh_4TQ" memberEnd="__Z9wyTi6Eey_P60LIh_4TQ __Z9wyzi6Eey_P60LIh_4TQ" navigableOwnedEnd="__Z9wyTi6Eey_P60LIh_4TQ">
+        <ownedEnd xmi:id="__Z9wyTi6Eey_P60LIh_4TQ" visibility="public" type="__Z9w1Ti6Eey_P60LIh_4TQ" association="__Z9wyDi6Eey_P60LIh_4TQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9wyji6Eey_P60LIh_4TQ"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="__Z9wyzi6Eey_P60LIh_4TQ" visibility="public" type="__Z9wxji6Eey_P60LIh_4TQ" association="__Z9wyDi6Eey_P60LIh_4TQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9wzDi6Eey_P60LIh_4TQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9wzTi6Eey_P60LIh_4TQ" name="Demander trajet">
+        <ownedComment xmi:id="__Z9wzji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9wzzi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w0Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w0Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w0ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <include xmi:id="__Z9w0zi6Eey_P60LIh_4TQ" name="UseCaseDependency" addition="__Z9wwDi6Eey_P60LIh_4TQ"/>
+        <extend xmi:id="__Z9w1Di6Eey_P60LIh_4TQ" name="UseCaseDependency" extendedCase="__Z9w3ji6Eey_P60LIh_4TQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w1Ti6Eey_P60LIh_4TQ" name="Offrir trajet">
+        <ownedComment xmi:id="__Z9w1ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w1zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w2Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w2Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w2ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <include xmi:id="__Z9w2zi6Eey_P60LIh_4TQ" name="UseCaseDependency" addition="__Z9wwDi6Eey_P60LIh_4TQ"/>
+        <extend xmi:id="__Z9w3Di6Eey_P60LIh_4TQ" name="UseCaseDependency" extendedCase="__Z9w5Di6Eey_P60LIh_4TQ"/>
+        <extend xmi:id="__Z9w3Ti6Eey_P60LIh_4TQ" name="UseCaseDependency" extendedCase="__Z9w6ji6Eey_P60LIh_4TQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w3ji6Eey_P60LIh_4TQ" name="Consulter profil conducteur">
+        <ownedComment xmi:id="__Z9w3zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w4Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w4Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w4ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w4zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w5Di6Eey_P60LIh_4TQ" name="Consulter profil passager">
+        <ownedComment xmi:id="__Z9w5Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w5ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w5zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w6Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w6Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w6ji6Eey_P60LIh_4TQ" name="Accepter passager">
+        <ownedComment xmi:id="__Z9w6zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w7Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w7Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w7ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w7zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <extend xmi:id="__Z9w8Di6Eey_P60LIh_4TQ" name="UseCaseDependency" extendedCase="__Z9w8Ti6Eey_P60LIh_4TQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w8Ti6Eey_P60LIh_4TQ" name="Noter passager">
+        <ownedComment xmi:id="__Z9w8ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w8zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w9Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w9Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w9ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w9zi6Eey_P60LIh_4TQ" name="Accepter offre">
+        <ownedComment xmi:id="__Z9w-Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w-Ti6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w-ji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w-zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9w_Di6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <extend xmi:id="__Z9w_Ti6Eey_P60LIh_4TQ" name="UseCaseDependency" extendedCase="__Z9w_ji6Eey_P60LIh_4TQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__Z9w_ji6Eey_P60LIh_4TQ" name="Noter conducteur">
+        <ownedComment xmi:id="__Z9w_zi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9xADi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9xATi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9xAji6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="__Z9xAzi6Eey_P60LIh_4TQ">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Actor" xmi:id="__Z9xBDi6Eey_P60LIh_4TQ" name="Membre"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="__Z9xBTi6Eey_P60LIh_4TQ" memberEnd="__Z9xBji6Eey_P60LIh_4TQ __Z9xCDi6Eey_P60LIh_4TQ" navigableOwnedEnd="__Z9xBji6Eey_P60LIh_4TQ">
+        <ownedEnd xmi:id="__Z9xBji6Eey_P60LIh_4TQ" visibility="public" type="__Z9wwDi6Eey_P60LIh_4TQ" association="__Z9xBTi6Eey_P60LIh_4TQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9xBzi6Eey_P60LIh_4TQ"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="__Z9xCDi6Eey_P60LIh_4TQ" visibility="public" type="__Z9xBDi6Eey_P60LIh_4TQ" association="__Z9xBTi6Eey_P60LIh_4TQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Z9xCTi6Eey_P60LIh_4TQ"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__Z9xCji6Eey_P60LIh_4TQ" name="avis">
+      <ownedAttribute xmi:id="__Z9xCzi6Eey_P60LIh_4TQ" name="Note" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__Z9xDDi6Eey_P60LIh_4TQ" name="Commentaire" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__Z9xDTi6Eey_P60LIh_4TQ" name="Offre"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="__Z9xDji6Eey_P60LIh_4TQ" name="Activity">
+      <nestedClassifier xmi:type="uml:Collaboration" xmi:id="__Z9xDzi6Eey_P60LIh_4TQ" name="locals"/>
+      <node xmi:type="uml:InitialNode" xmi:id="__Z9xEDi6Eey_P60LIh_4TQ" name="Initial Node" outgoing="__Z9xKTi6Eey_P60LIh_4TQ" inPartition="__Z9xbji6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xETi6Eey_P60LIh_4TQ" name="S'authentifier" outgoing="__Z9xKzi6Eey_P60LIh_4TQ" incoming="__Z9xKTi6Eey_P60LIh_4TQ __Z9xMTi6Eey_P60LIh_4TQ" inPartition="__Z9xbji6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="__Z9xEji6Eey_P60LIh_4TQ" name="Authent réussie" outgoing="__Z9xLji6Eey_P60LIh_4TQ __Z9xMTi6Eey_P60LIh_4TQ" incoming="__Z9xKzi6Eey_P60LIh_4TQ" inPartition="__Z9xbji6Eey_P60LIh_4TQ">
+        <ownedComment xmi:id="__Z9xEzi6Eey_P60LIh_4TQ">
+          <body>&lt;Enter note text here></body>
+        </ownedComment>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="__Z9xFDi6Eey_P60LIh_4TQ" name="Decision-Merge" outgoing="__Z9xNDi6Eey_P60LIh_4TQ __Z9xNzi6Eey_P60LIh_4TQ" incoming="__Z9xLji6Eey_P60LIh_4TQ" inPartition="__Z9xbji6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xFTi6Eey_P60LIh_4TQ" name="Demander trajet" outgoing="__Z9xOji6Eey_P60LIh_4TQ" incoming="__Z9xNDi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="__Z9xFji6Eey_P60LIh_4TQ" name="Attendre appariement" outgoing="__Z9xPTi6Eey_P60LIh_4TQ" incoming="__Z9xQDi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ">
+        <ownedComment xmi:id="__Z9xFzi6Eey_P60LIh_4TQ">
+          <body>&lt;Enter note text here></body>
+        </ownedComment>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="__Z9xGDi6Eey_P60LIh_4TQ" name="Decision-Merge" outgoing="__Z9xQDi6Eey_P60LIh_4TQ __Z9xQzi6Eey_P60LIh_4TQ" incoming="__Z9xOji6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:MergeNode" xmi:id="__Z9xGTi6Eey_P60LIh_4TQ" name="Decision-Merge" outgoing="__Z9xPzi6Eey_P60LIh_4TQ" incoming="__Z9xPTi6Eey_P60LIh_4TQ __Z9xQzi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="__Z9xGji6Eey_P60LIh_4TQ" name="Decision-Merge" outgoing="__Z9xRji6Eey_P60LIh_4TQ __Z9xSTi6Eey_P60LIh_4TQ" incoming="__Z9xPzi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xGzi6Eey_P60LIh_4TQ" name="Noter conducteur" outgoing="__Z9xTDi6Eey_P60LIh_4TQ" incoming="__Z9xVTi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xHDi6Eey_P60LIh_4TQ" name="Refuser appariement" outgoing="__Z9xTji6Eey_P60LIh_4TQ" incoming="__Z9xRji6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="__Z9xHTi6Eey_P60LIh_4TQ" name="Activity Final Node" incoming="__Z9xTDi6Eey_P60LIh_4TQ __Z9xTji6Eey_P60LIh_4TQ __Z9xWDi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="__Z9xHji6Eey_P60LIh_4TQ" name="Demander validation conducteur" outgoing="__Z9xUDi6Eey_P60LIh_4TQ" incoming="__Z9xSTi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="__Z9xHzi6Eey_P60LIh_4TQ" name="Recevoir validation conducteur" outgoing="__Z9xUji6Eey_P60LIh_4TQ" incoming="__Z9xUDi6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="__Z9xIDi6Eey_P60LIh_4TQ" name="Decision-Merge1" outgoing="__Z9xVTi6Eey_P60LIh_4TQ __Z9xWDi6Eey_P60LIh_4TQ" incoming="__Z9xUji6Eey_P60LIh_4TQ" inPartition="__Z9xbzi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xITi6Eey_P60LIh_4TQ" name="Proposer trajet" outgoing="__Z9xWzi6Eey_P60LIh_4TQ" incoming="__Z9xNzi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="__Z9xIji6Eey_P60LIh_4TQ" name="Decision-Merge" outgoing="__Z9xXTi6Eey_P60LIh_4TQ __Z9xYDi6Eey_P60LIh_4TQ" incoming="__Z9xZzi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xIzi6Eey_P60LIh_4TQ" name="Noter passager" outgoing="__Z9xYzi6Eey_P60LIh_4TQ" incoming="__Z9xaji6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="__Z9xJDi6Eey_P60LIh_4TQ" name="Activity Final Node" incoming="__Z9xYzi6Eey_P60LIh_4TQ __Z9xbDi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="__Z9xJTi6Eey_P60LIh_4TQ" name="Recevoir demande passager" outgoing="__Z9xZTi6Eey_P60LIh_4TQ" incoming="__Z9xWzi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__Z9xJji6Eey_P60LIh_4TQ" name="Consulter profil passager" outgoing="__Z9xZzi6Eey_P60LIh_4TQ" incoming="__Z9xZTi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ">
+        <body></body>
+      </node>
+      <node xmi:type="uml:SendSignalAction" xmi:id="__Z9xJzi6Eey_P60LIh_4TQ" name="Accepter demande passager" outgoing="__Z9xaji6Eey_P60LIh_4TQ" incoming="__Z9xXTi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="__Z9xKDi6Eey_P60LIh_4TQ" name="Refuser demande passager" outgoing="__Z9xbDi6Eey_P60LIh_4TQ" incoming="__Z9xYDi6Eey_P60LIh_4TQ" inPartition="__Z9xcDi6Eey_P60LIh_4TQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xKTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xEDi6Eey_P60LIh_4TQ" target="__Z9xETi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xKji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xKzi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xETi6Eey_P60LIh_4TQ" target="__Z9xEji6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xLDi6Eey_P60LIh_4TQ">
+          <body>Réussie ?</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xLTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xLji6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xEji6Eey_P60LIh_4TQ" target="__Z9xFDi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xLzi6Eey_P60LIh_4TQ">
+          <body>Oui</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xMDi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xMTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xEji6Eey_P60LIh_4TQ" target="__Z9xETi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xMji6Eey_P60LIh_4TQ">
+          <body>Non</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xMzi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xNDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xFDi6Eey_P60LIh_4TQ" target="__Z9xFTi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xNTi6Eey_P60LIh_4TQ">
+          <body>Passager</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xNji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xNzi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xFDi6Eey_P60LIh_4TQ" target="__Z9xITi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xODi6Eey_P60LIh_4TQ">
+          <body>Conducteur</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xOTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xOji6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xFTi6Eey_P60LIh_4TQ" target="__Z9xGDi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xOzi6Eey_P60LIh_4TQ">
+          <body>Appariement possible</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xPDi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xPTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xFji6Eey_P60LIh_4TQ" target="__Z9xGTi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xPji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xPzi6Eey_P60LIh_4TQ" source="__Z9xGTi6Eey_P60LIh_4TQ" target="__Z9xGji6Eey_P60LIh_4TQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xQDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xGDi6Eey_P60LIh_4TQ" target="__Z9xFji6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xQTi6Eey_P60LIh_4TQ">
+          <body>Non</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xQji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xQzi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xGDi6Eey_P60LIh_4TQ" target="__Z9xGTi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xRDi6Eey_P60LIh_4TQ">
+          <body>Oui</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xRTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xRji6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xGji6Eey_P60LIh_4TQ" target="__Z9xHDi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xRzi6Eey_P60LIh_4TQ">
+          <body>Non</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xSDi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xSTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xGji6Eey_P60LIh_4TQ" target="__Z9xHji6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xSji6Eey_P60LIh_4TQ">
+          <body>Oui</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xSzi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xTDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xGzi6Eey_P60LIh_4TQ" target="__Z9xHTi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xTTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xTji6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xHDi6Eey_P60LIh_4TQ" target="__Z9xHTi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xTzi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xUDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xHji6Eey_P60LIh_4TQ" target="__Z9xHzi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xUTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xUji6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xHzi6Eey_P60LIh_4TQ" target="__Z9xIDi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xUzi6Eey_P60LIh_4TQ">
+          <body>Conducteur OK ?</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xVDi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xVTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xIDi6Eey_P60LIh_4TQ" target="__Z9xGzi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xVji6Eey_P60LIh_4TQ">
+          <body>Oui</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xVzi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xWDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xIDi6Eey_P60LIh_4TQ" target="__Z9xHTi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xWTi6Eey_P60LIh_4TQ">
+          <body>Non</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xWji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xWzi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xITi6Eey_P60LIh_4TQ" target="__Z9xJTi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xXDi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xXTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xIji6Eey_P60LIh_4TQ" target="__Z9xJzi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xXji6Eey_P60LIh_4TQ">
+          <body>Oui</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xXzi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xYDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xIji6Eey_P60LIh_4TQ" target="__Z9xKDi6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xYTi6Eey_P60LIh_4TQ">
+          <body>Non</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xYji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xYzi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xIzi6Eey_P60LIh_4TQ" target="__Z9xJDi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xZDi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xZTi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xJTi6Eey_P60LIh_4TQ" target="__Z9xJji6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xZji6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xZzi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xJji6Eey_P60LIh_4TQ" target="__Z9xIji6Eey_P60LIh_4TQ">
+        <guard xmi:type="uml:OpaqueExpression" xmi:id="__Z9xaDi6Eey_P60LIh_4TQ">
+          <body>Accepter ?</body>
+        </guard>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xaTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xaji6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xJzi6Eey_P60LIh_4TQ" target="__Z9xIzi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xazi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__Z9xbDi6Eey_P60LIh_4TQ" name="ControlFlow" source="__Z9xKDi6Eey_P60LIh_4TQ" target="__Z9xJDi6Eey_P60LIh_4TQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__Z9xbTi6Eey_P60LIh_4TQ" value="1"/>
+      </edge>
+      <group xmi:type="uml:ActivityPartition" xmi:id="__Z9xbji6Eey_P60LIh_4TQ" name="Utilisateur" node="__Z9xEDi6Eey_P60LIh_4TQ __Z9xETi6Eey_P60LIh_4TQ __Z9xEji6Eey_P60LIh_4TQ __Z9xFDi6Eey_P60LIh_4TQ"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="__Z9xbzi6Eey_P60LIh_4TQ" name="Passager" node="__Z9xFTi6Eey_P60LIh_4TQ __Z9xFji6Eey_P60LIh_4TQ __Z9xGDi6Eey_P60LIh_4TQ __Z9xGTi6Eey_P60LIh_4TQ __Z9xGji6Eey_P60LIh_4TQ __Z9xGzi6Eey_P60LIh_4TQ __Z9xHDi6Eey_P60LIh_4TQ __Z9xHTi6Eey_P60LIh_4TQ __Z9xHji6Eey_P60LIh_4TQ __Z9xHzi6Eey_P60LIh_4TQ __Z9xIDi6Eey_P60LIh_4TQ"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="__Z9xcDi6Eey_P60LIh_4TQ" name="Conducteur" node="__Z9xITi6Eey_P60LIh_4TQ __Z9xIji6Eey_P60LIh_4TQ __Z9xIzi6Eey_P60LIh_4TQ __Z9xJDi6Eey_P60LIh_4TQ __Z9xJTi6Eey_P60LIh_4TQ __Z9xJji6Eey_P60LIh_4TQ __Z9xJzi6Eey_P60LIh_4TQ __Z9xKDi6Eey_P60LIh_4TQ"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

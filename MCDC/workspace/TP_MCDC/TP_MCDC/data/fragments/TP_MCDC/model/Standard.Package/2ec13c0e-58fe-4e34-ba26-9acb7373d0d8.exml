@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="CU" version="4">
+  <OBJECT>
+    <ID name="CU" mc="Standard.Package" uid="2ec13c0e-58fe-4e34-ba26-9acb7373d0d8"/>
+    <PID name="Package" mc="Standard.Package" uid="c7e01b0a-0fa6-4dc6-853c-112e3f809869"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[CU]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Passager" mc="Standard.Actor" uid="02938009-7fc5-4429-95be-d051c22fc817"/>
+        <COMPID name="S'identifier" mc="Standard.UseCase" uid="21473acc-6604-4970-95e5-5a4a020c4c6d"/>
+        <COMPID name="conducteur" mc="Standard.Actor" uid="b09a91ac-44bf-4064-97aa-83db67682246"/>
+        <COMPID name="Demander trajet" mc="Standard.UseCase" uid="718930c5-9bff-4069-b602-7080f6b2a7a6"/>
+        <COMPID name="Offrir trajet" mc="Standard.UseCase" uid="9fe78bcc-54eb-4759-b0c4-bb433c5429e2"/>
+        <COMPID name="Consulter profil conducteur" mc="Standard.UseCase" uid="59892a5d-0d31-46c5-a867-3704cbddc8b4"/>
+        <COMPID name="Consulter profil passager" mc="Standard.UseCase" uid="0663b075-b348-4207-b06d-beff0f13657e"/>
+        <COMPID name="Accepter passager" mc="Standard.UseCase" uid="1394111e-6081-43c6-949d-29f684ca5f9f"/>
+        <COMPID name="Noter passager" mc="Standard.UseCase" uid="74691884-8fed-4aaf-a181-a0e5ea174395"/>
+        <COMPID name="Accepter offre" mc="Standard.UseCase" uid="27d64353-f5ac-4e1e-82cb-77d60f70033d"/>
+        <COMPID name="Noter conducteur" mc="Standard.UseCase" uid="86a283aa-2cad-4404-84c3-6a83724003dc"/>
+        <COMPID name="Membre" mc="Standard.Actor" uid="53f167db-a2ea-4f61-aec4-51df57176161"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="CU Use Case diagram" mc="Standard.UseCaseDiagram" uid="59829043-e591-4bcd-84cb-489747c9cfb0"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

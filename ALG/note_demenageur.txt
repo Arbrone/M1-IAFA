@@ -1,0 +1,20 @@
+foncion objective : somme j=1 jusqu'a Nb yj ou nb est le nombre de boites
+
+contraintes :
+	- la somme de la taille des objets dans une boite ne doit pas dépasser la capacité
+		-> pour tout j appartenant [1,Nb], somme de de i=1 à No xij*ti <= capacité
+	
+	- un boite est utilisée ssi au moins 1 objet
+		-> pour tt j€[1,Nb] pour tt i€[1,Nb], yj >= xij
+
+	- chaque objet dans etre exactement dans 1 boite
+		-> pour tt i€[No], somme j à Nb xij = 1 
+
+No objets
+Nb boites
+
+{yj = 0 si boite j inutilisé
+{yj = 1 sinon
+
+{xij = 1 si objet i dans boite j
+{xij = 0 sinon

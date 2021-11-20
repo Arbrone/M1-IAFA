@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_Fmhd0CK7EeylYMw2n6ECWA" name="Package">
+  <eAnnotations xmi:id="_Fmhd0SK7EeylYMw2n6ECWA" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_Fmhd0iK7EeylYMw2n6ECWA" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_Fmhd0yK7EeylYMw2n6ECWA" value="3.0.0"/>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Fmhd1CK7EeylYMw2n6ECWA" name="Activity">
+    <nestedClassifier xmi:type="uml:Collaboration" xmi:id="_Fmhd1SK7EeylYMw2n6ECWA" name="locals"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_Fmhd1iK7EeylYMw2n6ECWA" name="Initial Node" outgoing="_Fmhd4iK7EeylYMw2n6ECWA" inPartition="_Fmhd_CK7EeylYMw2n6ECWA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Fmhd1yK7EeylYMw2n6ECWA" name="S'authentifier" outgoing="_Fmhd5CK7EeylYMw2n6ECWA" incoming="_Fmhd4iK7EeylYMw2n6ECWA _Fmhd6iK7EeylYMw2n6ECWA" inPartition="_Fmhd_CK7EeylYMw2n6ECWA">
+      <body></body>
+    </node>
+    <node xmi:type="uml:DecisionNode" xmi:id="_Fmhd2CK7EeylYMw2n6ECWA" name="Authent réussie" outgoing="_Fmhd5yK7EeylYMw2n6ECWA _Fmhd6iK7EeylYMw2n6ECWA" incoming="_Fmhd5CK7EeylYMw2n6ECWA" inPartition="_Fmhd_CK7EeylYMw2n6ECWA">
+      <ownedComment xmi:id="_Fmhd2SK7EeylYMw2n6ECWA">
+        <body>&lt;Enter note text here></body>
+      </ownedComment>
+    </node>
+    <node xmi:type="uml:DecisionNode" xmi:id="_Fmhd2iK7EeylYMw2n6ECWA" name="Decision-Merge" outgoing="_Fmhd7SK7EeylYMw2n6ECWA _Fmhd8CK7EeylYMw2n6ECWA" incoming="_Fmhd5yK7EeylYMw2n6ECWA" inPartition="_Fmhd_CK7EeylYMw2n6ECWA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Fmhd2yK7EeylYMw2n6ECWA" name="Demander trajet" outgoing="_Fmhd8yK7EeylYMw2n6ECWA" incoming="_Fmhd7SK7EeylYMw2n6ECWA" inPartition="_Fmhd_SK7EeylYMw2n6ECWA">
+      <body></body>
+    </node>
+    <node xmi:type="uml:AcceptEventAction" xmi:id="_Fmhd3CK7EeylYMw2n6ECWA" name="Attendre appariement" incoming="_Fmhd9iK7EeylYMw2n6ECWA" inPartition="_Fmhd_SK7EeylYMw2n6ECWA">
+      <ownedComment xmi:id="_Fmhd3SK7EeylYMw2n6ECWA">
+        <body>&lt;Enter note text here></body>
+      </ownedComment>
+    </node>
+    <node xmi:type="uml:DecisionNode" xmi:id="_Fmhd3iK7EeylYMw2n6ECWA" name="Decision-Merge" outgoing="_Fmhd9iK7EeylYMw2n6ECWA _Fmhd-SK7EeylYMw2n6ECWA" incoming="_Fmhd8yK7EeylYMw2n6ECWA" inPartition="_Fmhd_SK7EeylYMw2n6ECWA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Fmhd3yK7EeylYMw2n6ECWA" name="Sélectionner trajet" incoming="_Fmhd-SK7EeylYMw2n6ECWA" inPartition="_Fmhd_SK7EeylYMw2n6ECWA">
+      <ownedComment xmi:id="_Fmhd4CK7EeylYMw2n6ECWA">
+        <body>&lt;Enter note text here></body>
+      </ownedComment>
+      <body></body>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Fmhd4SK7EeylYMw2n6ECWA" name="Proposer trajet" incoming="_Fmhd8CK7EeylYMw2n6ECWA" inPartition="_Fmhd_iK7EeylYMw2n6ECWA">
+      <body></body>
+    </node>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd4iK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd1iK7EeylYMw2n6ECWA" target="_Fmhd1yK7EeylYMw2n6ECWA">
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd4yK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd5CK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd1yK7EeylYMw2n6ECWA" target="_Fmhd2CK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd5SK7EeylYMw2n6ECWA">
+        <body>Réussie ?</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd5iK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd5yK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd2CK7EeylYMw2n6ECWA" target="_Fmhd2iK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd6CK7EeylYMw2n6ECWA">
+        <body>Oui</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd6SK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd6iK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd2CK7EeylYMw2n6ECWA" target="_Fmhd1yK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd6yK7EeylYMw2n6ECWA">
+        <body>Non</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd7CK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd7SK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd2iK7EeylYMw2n6ECWA" target="_Fmhd2yK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd7iK7EeylYMw2n6ECWA">
+        <body>Passager</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd7yK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd8CK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd2iK7EeylYMw2n6ECWA" target="_Fmhd4SK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd8SK7EeylYMw2n6ECWA">
+        <body>Conducteur</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd8iK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd8yK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd2yK7EeylYMw2n6ECWA" target="_Fmhd3iK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd9CK7EeylYMw2n6ECWA">
+        <body>Appariement possible</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd9SK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd9iK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd3iK7EeylYMw2n6ECWA" target="_Fmhd3CK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd9yK7EeylYMw2n6ECWA">
+        <body>Non</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd-CK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Fmhd-SK7EeylYMw2n6ECWA" name="ControlFlow" source="_Fmhd3iK7EeylYMw2n6ECWA" target="_Fmhd3yK7EeylYMw2n6ECWA">
+      <guard xmi:type="uml:OpaqueExpression" xmi:id="_Fmhd-iK7EeylYMw2n6ECWA">
+        <body>Oui</body>
+      </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Fmhd-yK7EeylYMw2n6ECWA" value="1"/>
+    </edge>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_Fmhd_CK7EeylYMw2n6ECWA" name="Utilisateur" node="_Fmhd1iK7EeylYMw2n6ECWA _Fmhd1yK7EeylYMw2n6ECWA _Fmhd2CK7EeylYMw2n6ECWA _Fmhd2iK7EeylYMw2n6ECWA"/>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_Fmhd_SK7EeylYMw2n6ECWA" name="Passager" node="_Fmhd2yK7EeylYMw2n6ECWA _Fmhd3CK7EeylYMw2n6ECWA _Fmhd3iK7EeylYMw2n6ECWA _Fmhd3yK7EeylYMw2n6ECWA"/>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_Fmhd_iK7EeylYMw2n6ECWA" name="Conducteur" node="_Fmhd4SK7EeylYMw2n6ECWA"/>
+  </packagedElement>
+</uml:Model>

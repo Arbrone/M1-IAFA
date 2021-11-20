@@ -1,0 +1,582 @@
+   0  $accept : %entry% $end
+
+   1  program : INT DIMENSIONS OF config END opt_statements EOF
+
+   2  config : INT DOT_DOT INT
+   3         | fields
+
+   4  fields : field
+   5         | fields COMMA field
+
+   6  field : ID OF INT DOT_DOT INT
+
+   7  opt_statements :
+   8                 | statement opt_statements
+
+   9  statement : cell ASSIGN expression
+  10            | ID ASSIGN expression
+
+  11  cell : LBRACKET INT COMMA INT RBRACKET
+
+  12  atomic : value
+  13         | cell
+  14         | INT
+  15         | ID
+  16         | LPARENT expression RPARENT
+
+  17  value : ADD atomic
+  18        | SUB atomic
+
+  19  lower : atomic
+  20        | atomic MUL lower
+  21        | atomic DIV lower
+  22        | atomic MOD lower
+
+  23  expression : lower
+  24             | expression ADD lower
+  25             | expression SUB lower
+
+  26  %entry% : '\001' program
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . program  (26)
+
+	INT  shift 3
+	.  error
+
+	program  goto 4
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	program : INT . DIMENSIONS OF config END opt_statements EOF  (1)
+
+	DIMENSIONS  shift 5
+	.  error
+
+
+state 4
+	%entry% : '\001' program .  (26)
+
+	.  reduce 26
+
+
+state 5
+	program : INT DIMENSIONS . OF config END opt_statements EOF  (1)
+
+	OF  shift 6
+	.  error
+
+
+state 6
+	program : INT DIMENSIONS OF . config END opt_statements EOF  (1)
+
+	ID  shift 7
+	INT  shift 8
+	.  error
+
+	config  goto 9
+	fields  goto 10
+	field  goto 11
+
+
+state 7
+	field : ID . OF INT DOT_DOT INT  (6)
+
+	OF  shift 12
+	.  error
+
+
+state 8
+	config : INT . DOT_DOT INT  (2)
+
+	DOT_DOT  shift 13
+	.  error
+
+
+state 9
+	program : INT DIMENSIONS OF config . END opt_statements EOF  (1)
+
+	END  shift 14
+	.  error
+
+
+state 10
+	config : fields .  (3)
+	fields : fields . COMMA field  (5)
+
+	COMMA  shift 15
+	END  reduce 3
+
+
+state 11
+	fields : field .  (4)
+
+	.  reduce 4
+
+
+state 12
+	field : ID OF . INT DOT_DOT INT  (6)
+
+	INT  shift 16
+	.  error
+
+
+state 13
+	config : INT DOT_DOT . INT  (2)
+
+	INT  shift 17
+	.  error
+
+
+state 14
+	program : INT DIMENSIONS OF config END . opt_statements EOF  (1)
+	opt_statements : .  (7)
+
+	LBRACKET  shift 18
+	ID  shift 19
+	EOF  reduce 7
+
+	opt_statements  goto 20
+	statement  goto 21
+	cell  goto 22
+
+
+state 15
+	fields : fields COMMA . field  (5)
+
+	ID  shift 7
+	.  error
+
+	field  goto 23
+
+
+state 16
+	field : ID OF INT . DOT_DOT INT  (6)
+
+	DOT_DOT  shift 24
+	.  error
+
+
+state 17
+	config : INT DOT_DOT INT .  (2)
+
+	.  reduce 2
+
+
+state 18
+	cell : LBRACKET . INT COMMA INT RBRACKET  (11)
+
+	INT  shift 25
+	.  error
+
+
+state 19
+	statement : ID . ASSIGN expression  (10)
+
+	ASSIGN  shift 26
+	.  error
+
+
+state 20
+	program : INT DIMENSIONS OF config END opt_statements . EOF  (1)
+
+	EOF  shift 27
+	.  error
+
+
+state 21
+	opt_statements : statement . opt_statements  (8)
+	opt_statements : .  (7)
+
+	LBRACKET  shift 18
+	ID  shift 19
+	EOF  reduce 7
+
+	opt_statements  goto 28
+	statement  goto 21
+	cell  goto 22
+
+
+state 22
+	statement : cell . ASSIGN expression  (9)
+
+	ASSIGN  shift 29
+	.  error
+
+
+state 23
+	fields : fields COMMA field .  (5)
+
+	.  reduce 5
+
+
+state 24
+	field : ID OF INT DOT_DOT . INT  (6)
+
+	INT  shift 30
+	.  error
+
+
+state 25
+	cell : LBRACKET INT . COMMA INT RBRACKET  (11)
+
+	COMMA  shift 31
+	.  error
+
+
+state 26
+	statement : ID ASSIGN . expression  (10)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	expression  goto 38
+	atomic  goto 39
+	value  goto 40
+	lower  goto 41
+
+
+state 27
+	program : INT DIMENSIONS OF config END opt_statements EOF .  (1)
+
+	.  reduce 1
+
+
+state 28
+	opt_statements : statement opt_statements .  (8)
+
+	.  reduce 8
+
+
+state 29
+	statement : cell ASSIGN . expression  (9)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	expression  goto 42
+	atomic  goto 39
+	value  goto 40
+	lower  goto 41
+
+
+state 30
+	field : ID OF INT DOT_DOT INT .  (6)
+
+	.  reduce 6
+
+
+state 31
+	cell : LBRACKET INT COMMA . INT RBRACKET  (11)
+
+	INT  shift 43
+	.  error
+
+
+state 32
+	atomic : LPARENT . expression RPARENT  (16)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	expression  goto 44
+	atomic  goto 39
+	value  goto 40
+	lower  goto 41
+
+
+state 33
+	value : ADD . atomic  (17)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 45
+	value  goto 40
+
+
+state 34
+	value : SUB . atomic  (18)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 46
+	value  goto 40
+
+
+state 35
+	atomic : ID .  (15)
+
+	.  reduce 15
+
+
+state 36
+	atomic : INT .  (14)
+
+	.  reduce 14
+
+
+state 37
+	atomic : cell .  (13)
+
+	.  reduce 13
+
+
+state 38
+	statement : ID ASSIGN expression .  (10)
+	expression : expression . ADD lower  (24)
+	expression : expression . SUB lower  (25)
+
+	ADD  shift 47
+	SUB  shift 48
+	EOF  reduce 10
+	LBRACKET  reduce 10
+	ID  reduce 10
+
+
+state 39
+	lower : atomic .  (19)
+	lower : atomic . MUL lower  (20)
+	lower : atomic . DIV lower  (21)
+	lower : atomic . MOD lower  (22)
+
+	MUL  shift 49
+	DIV  shift 50
+	MOD  shift 51
+	EOF  reduce 19
+	LBRACKET  reduce 19
+	RPARENT  reduce 19
+	ADD  reduce 19
+	SUB  reduce 19
+	ID  reduce 19
+
+
+state 40
+	atomic : value .  (12)
+
+	.  reduce 12
+
+
+state 41
+	expression : lower .  (23)
+
+	.  reduce 23
+
+
+state 42
+	statement : cell ASSIGN expression .  (9)
+	expression : expression . ADD lower  (24)
+	expression : expression . SUB lower  (25)
+
+	ADD  shift 47
+	SUB  shift 48
+	EOF  reduce 9
+	LBRACKET  reduce 9
+	ID  reduce 9
+
+
+state 43
+	cell : LBRACKET INT COMMA INT . RBRACKET  (11)
+
+	RBRACKET  shift 52
+	.  error
+
+
+state 44
+	atomic : LPARENT expression . RPARENT  (16)
+	expression : expression . ADD lower  (24)
+	expression : expression . SUB lower  (25)
+
+	RPARENT  shift 53
+	ADD  shift 47
+	SUB  shift 48
+	.  error
+
+
+state 45
+	value : ADD atomic .  (17)
+
+	.  reduce 17
+
+
+state 46
+	value : SUB atomic .  (18)
+
+	.  reduce 18
+
+
+state 47
+	expression : expression ADD . lower  (24)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 39
+	value  goto 40
+	lower  goto 54
+
+
+state 48
+	expression : expression SUB . lower  (25)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 39
+	value  goto 40
+	lower  goto 55
+
+
+state 49
+	lower : atomic MUL . lower  (20)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 39
+	value  goto 40
+	lower  goto 56
+
+
+state 50
+	lower : atomic DIV . lower  (21)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 39
+	value  goto 40
+	lower  goto 57
+
+
+state 51
+	lower : atomic MOD . lower  (22)
+
+	LBRACKET  shift 18
+	LPARENT  shift 32
+	ADD  shift 33
+	SUB  shift 34
+	ID  shift 35
+	INT  shift 36
+	.  error
+
+	cell  goto 37
+	atomic  goto 39
+	value  goto 40
+	lower  goto 58
+
+
+state 52
+	cell : LBRACKET INT COMMA INT RBRACKET .  (11)
+
+	.  reduce 11
+
+
+state 53
+	atomic : LPARENT expression RPARENT .  (16)
+
+	.  reduce 16
+
+
+state 54
+	expression : expression ADD lower .  (24)
+
+	.  reduce 24
+
+
+state 55
+	expression : expression SUB lower .  (25)
+
+	.  reduce 25
+
+
+state 56
+	lower : atomic MUL lower .  (20)
+
+	.  reduce 20
+
+
+state 57
+	lower : atomic DIV lower .  (21)
+
+	.  reduce 21
+
+
+state 58
+	lower : atomic MOD lower .  (22)
+
+	.  reduce 22
+
+
+22 terminals, 13 nonterminals
+27 grammar rules, 59 states

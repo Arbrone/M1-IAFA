@@ -1,0 +1,4 @@
+cGet  = 
+cSet  = 
+cSize = 4 
+cMove = 3

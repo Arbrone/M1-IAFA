@@ -1,0 +1,9 @@
+#Fri Oct 15 22:10:02 CEST 2021
+org.modelio.module.propertytab.JavaDesigner\ v3.8.01\ GModule\ @file\:///C\:/Users/VRt2401A/.modelio/3.8/modules/JavaDesigner_3.8.01/JavaDesigner_3.8.01.jmdac\ runtime\ module_.org.modelio.diagram.perspective.parentId=app.ui.ext_com.partstack.right
+org.modelio.module.propertytab.JavaDesigner\ v3.8.01\ GModule\ @file\:///C\:/Users/VRt2401A/.modelio/3.8/modules/JavaDesigner_3.8.01/JavaDesigner_3.8.01.jmdac\ runtime\ module_.org.modelio.full.perspective.parentId=app.ui.ext_com.partstack.bottom
+org.modelio.module.propertytab.JavaDesigner\ v3.8.01\ GModule\ @file\:///C\:/Users/VRt2401A/.modelio/3.8/modules/JavaDesigner_3.8.01/JavaDesigner_3.8.01.jmdac\ runtime\ module_.org.modelio.development.perspective.parentId=app.ui.ext_com.partstack.bottom
+org.modelio.app.diagram.editor.OpenedDiagrams0='Activity Activity diagram' {1add75c7-dceb-4b3a-aed4-47e401d68ea1} Standard.ActivityDiagram
+org.modelio.diagram.editor.OpenedDiagrams2='CU Use Case diagram' {59829043-e591-4bcd-84cb-489747c9cfb0} Standard.UseCaseDiagram
+org.modelio.diagram.editor.OpenedDiagrams1='Package Class diagram' {8bd1bcf9-755c-46b2-bad9-93d0c48bf253} Standard.ClassDiagram
+org.modelio.diagram.editor.OpenedDiagrams0='Activity Activity diagram' {1add75c7-dceb-4b3a-aed4-47e401d68ea1} Standard.ActivityDiagram
+org.modelio.module.propertytab.JavaDesigner\ v3.8.01\ GModule\ @file\:///C\:/Users/VRt2401A/.modelio/3.8/modules/JavaDesigner_3.8.01/JavaDesigner_3.8.01.jmdac\ runtime\ module_.org.modelio.app.ui.model.perspective.parentId=org.modelio.app.bottom.parts

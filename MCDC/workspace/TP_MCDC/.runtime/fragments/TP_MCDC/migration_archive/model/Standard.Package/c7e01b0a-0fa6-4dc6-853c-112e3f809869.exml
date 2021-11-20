@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Package" version="4">
+  <OBJECT>
+    <ID name="Package" mc="Standard.Package" uid="c7e01b0a-0fa6-4dc6-853c-112e3f809869"/>
+    <PID name="tp_mcdc" mc="Standard.Package" uid="9c057a3a-2cbf-4276-ad5b-5d838105a029"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Package]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Activity" mc="Standard.Activity" uid="d7ddb3a9-ec8f-4076-a3ae-892f65015e6a"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="Utilisateur" mc="Standard.Class" uid="0814ceb2-8cc2-42c6-b915-d51168052839"/>
+        <COMPID name="Passager" mc="Standard.Class" uid="9bafa9fc-f7d4-4956-b7b3-08747a5f0fc8"/>
+        <COMPID name="Conducteur" mc="Standard.Class" uid="8077876a-eeaa-426c-a2b3-9f7b6b2dca63"/>
+        <COMPID name="Trajet" mc="Standard.Class" uid="77e83f1d-546f-404b-9efc-7482fa60cd29"/>
+        <COMPID name="CU" mc="Standard.Package" uid="2ec13c0e-58fe-4e34-ba26-9acb7373d0d8"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Package Class diagram" mc="Standard.ClassDiagram" uid="8bd1bcf9-755c-46b2-bad9-93d0c48bf253"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

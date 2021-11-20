@@ -1,0 +1,121 @@
+DIGEST be8036c5a1c7d2c35ab90ca6de08579f
+Ftp1
+R15:17 Coq.micromega.Lia <> <> lib
+mod 28:34 <> ENTIERS
+def 125:127 ENTIERS pow
+R132:134 Coq.Init.Datatypes <> nat ind
+binder 130:130 <> x:1
+R140:142 Coq.Init.Datatypes <> nat ind
+binder 138:138 <> n:2
+R156:156 tp1 <> n:2 var
+R180:180 Coq.Init.Datatypes <> S constr
+R190:193 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R201:201 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R189:189 tp1 <> x:1 var
+R194:196 tp1 <> pow:3 def
+R198:198 tp1 <> x:1 var
+R277:279 tp1 ENTIERS pow def
+R300:302 tp1 ENTIERS pow def
+def 352:358 ENTIERS pow_2_3
+R368:370 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R361:363 tp1 ENTIERS pow def
+prf 495:499 ENTIERS pow_1
+binder 509:509 <> n:5
+R519:521 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R512:514 tp1 ENTIERS pow def
+R518:518 tp1 <> n:5 var
+prf 701:707 ENTIERS pow_add
+binder 717:717 <> x:6
+binder 719:719 <> n:7
+binder 721:721 <> m:8
+R735:737 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R724:726 tp1 ENTIERS pow def
+R728:728 tp1 <> x:6 var
+R732:732 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R731:731 tp1 <> n:7 var
+R733:733 tp1 <> m:8 var
+R745:747 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R738:740 tp1 ENTIERS pow def
+R742:742 tp1 <> x:6 var
+R744:744 tp1 <> n:7 var
+R748:750 tp1 ENTIERS pow def
+R752:752 tp1 <> x:6 var
+R754:754 tp1 <> m:8 var
+prf 927:933 ENTIERS mul_pow
+binder 943:943 <> x:9
+binder 945:945 <> y:10
+binder 947:947 <> n:11
+R961:963 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R950:952 tp1 ENTIERS pow def
+R956:956 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R955:955 tp1 <> x:9 var
+R957:957 tp1 <> y:10 var
+R960:960 tp1 <> n:11 var
+R971:973 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R964:966 tp1 ENTIERS pow def
+R968:968 tp1 <> x:9 var
+R970:970 tp1 <> n:11 var
+R974:976 tp1 ENTIERS pow def
+R978:978 tp1 <> y:10 var
+R980:980 tp1 <> n:11 var
+prf 1152:1158 ENTIERS pow_mul
+binder 1168:1168 <> x:12
+binder 1170:1170 <> n:13
+binder 1172:1172 <> m:14
+R1186:1188 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1175:1177 tp1 ENTIERS pow def
+R1179:1179 tp1 <> x:12 var
+R1183:1183 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R1182:1182 tp1 <> n:13 var
+R1184:1184 tp1 <> m:14 var
+R1189:1191 tp1 ENTIERS pow def
+R1194:1196 tp1 ENTIERS pow def
+R1198:1198 tp1 <> x:12 var
+R1200:1200 tp1 <> n:13 var
+R1203:1203 tp1 <> m:14 var
+R1243:1249 tp1 ENTIERS <> mod
+mod 1261:1266 <> LISTES
+R1285:1288 Coq.Lists.List <> <> lib
+R1299:1311 Coq.Lists.List ListNotations <> modtype
+def 1607:1611 LISTES merge
+binder 1614:1614 <> T:15
+R1625:1628 Coq.Init.Datatypes <> list ind
+R1630:1630 tp1 <> T:15 var
+binder 1618:1619 <> l1:16
+binder 1621:1622 <> l2:17
+R1634:1637 Coq.Init.Datatypes <> list ind
+R1639:1639 tp1 <> T:15 var
+R1644:1645 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+def 1682:1694 LISTES merge_example
+R1716:1718 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1697:1701 tp1 LISTES merge def
+R1711:1711 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1713:1713 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1715:1715 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1703:1703 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1705:1705 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1707:1707 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1709:1709 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1719:1719 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1721:1721 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1723:1723 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1725:1725 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1727:1727 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R1729:1729 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+prf 1914:1922 LISTES merge_len
+binder 1932:1932 <> T:19
+R1942:1945 Coq.Init.Datatypes <> list ind
+R1947:1947 tp1 <> T:19 var
+binder 1935:1936 <> l1:20
+binder 1938:1939 <> l2:21
+R1971:1973 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1951:1956 Coq.Init.Datatypes <> length def
+R1959:1963 tp1 LISTES merge def
+R1968:1969 tp1 <> l2:21 var
+R1965:1966 tp1 <> l1:20 var
+R1983:1985 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R1974:1979 Coq.Init.Datatypes <> length def
+R1981:1982 tp1 <> l1:20 var
+R1986:1991 Coq.Init.Datatypes <> length def
+R1993:1994 tp1 <> l2:21 var
+R2032:2037 tp1 LISTES <> mod
