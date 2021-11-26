@@ -125,17 +125,17 @@ let rec comp_cond c l_then l_else =
 
 	match c with
 	| COMP (c_init, e1, e2) -> let (v1,q1) = comp_expr e1 in
-                                        let (v2,q2) = comp_expr e2 in 
-                                                (q1 @ q2 @ [ 
-                                                match c_init with
-                                                | COMP_EQ -> GOTO_NE(l_else, v1, v2)
-                                                | COMP_NE -> GOTO_EQ(l_else, v1, v2)
-                                                | COMP_LT -> GOTO_GE(l_else, v1, v2)
-                                                | COMP_LE -> GOTO_GT(l_else, v1, v2)
-                                                | COMP_GT -> GOTO_LE(l_else, v1, v2)
-                                                | COMP_GE -> GOTO_GT(l_else, v1, v2)
-                        ])
-        | _ ->
+															let (v2,q2) = comp_expr e2 in
+																(q1 @ q2 @ [
+																	match c_init with
+																	| COMP_NE -> GOTO_NE(LABEL l_then, v1, v2)	
+																	| COMP_LT -> GOTO_LT(LABEL l_then, v1, v2)
+																	| COMP_LE -> GOTO_LE(LABEL l_then, v1, v2)	
+																	| COMP_GT -> GOTO_GT(LABEL l_then, v1, v2)	
+																	| COMP_GE -> GOTO_GE(LABEL l_then, v1, v2)
+																	| COMP_EQ -> GOTO_EQ(LABEL l_then, v1, v2)
+																])
+	| _ ->
 		failwith "bad condition"
 
 
@@ -158,12 +158,7 @@ let rec comp_stmt s =
                 q @ [
                         SET (r,v);
                 ]
-        | IF_THEN (c, s1, s2) -> 
-                let lab_then = new_lab() in
-                let lab_else = new_lab() in
-                let lab_end  = new_lab() in 
-                (comp_cond c lab_then lab_else) @ [LABEL lab_then]  @ (comp_stmt s1) @ [GOTO(lab_end)] @ [LABEL lab_else]  @ (comp_stmt s2) @ [LABEL lab_end]       
-         
+        | IF_THEN (c, s1, s2) -> comp_cond c s1 s2
 
         | _ ->
 		failwith "bad instruction"

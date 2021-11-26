@@ -116,12 +116,12 @@ Reserved Notation "env |- << stk , l >> --> << stk' , l' >>" (at level 30).
 Inductive smallStep (env : string -> nat) : list nat -> asm -> list nat -> asm -> Prop :=
   | ssCompV : forall stk v l, env |- << stk, (Comp (Var v) l) >> --> << (env v :: stk), l >>
   | ssCompC : forall stk c l, env |- << stk, (Comp (Const c) l) >> --> << (c :: stk), l >>
-  | ssCompA : forall stk a b l, env |- << stk, (Comp (Add a b) l) >> --> << stk, (Comp e2 (Comp e1 (add l))) >>
-  | ssCompS : forall stk a b l, env |- << stk, (Comp (Sub a b) l) >> --> << stk, (Comp e2 (Comp e1 (sub l))) >>
-  | ssCompI : forall stk c e1 e2 l, env |- << stk, (Comp (IfThen a b) l) >> --> << stk, (Comp c 
-  | ssExecA :
-  | ssExecS :
-  | ssExecI :
+  | ssCompA : forall stk a b l, env |- << stk, (Comp (Add a b) l) >> --> << stk, (Comp a (Comp b (add l))) >>
+  | ssCompS : forall stk a b l, env |- << stk, (Comp (Sub a b) l) >> --> << stk, (Comp a (Comp b (sub l))) >>
+  | ssCompI : forall stk c e1 e2 l, env |- << stk, (Comp (IfThen c e1 e2) l) >> --> << stk, (Comp c (ifThen (Comp e1 l) (Comp e2 l))) >>
+  | ssExecA : forall stk a b l, env |- << a::b::stk, add l >> --> << ((a + b)::stk), l >>
+  | ssExecS : forall stk a b l, env |- << a::b::stk, sub l >> --> << ((a - b)::stk), l >>
+  | ssExecI : forall stk c e1 e2, env |- << c::stk, ifThen e1 e2 >> --> << stk, (if c=?0 then e2 else e1) >>
   
 where "env |- << stk , l >> --> << stk' , l' >>" := (smallStep env stk l stk' l').
 
@@ -154,8 +154,29 @@ Fixpoint asm_sem (env : string -> nat) (stk : list nat) (l : asm) : Result nat :
       | [] => StackError _
       | v :: _ => Value _ v
       end
-  | _ => (* TODO *) StackError _
+  | Comp e l' => eval e l'
+  
+  | add l' => let v1 := match (asm_sem env stk stop) with |Value _ v => v 
+                                                          |_ => 0 end in
+                
+                let v2 := match (asm_sem env stk stop) with |Value _ v => v 
+                                                            | _ => 0 end in
+                  let r := v1 + v2 in
+                    (asm_sem env stk (Comp (Add v1 v2) l'))
+                
+  | sub l' => let v1 := (asm_sem env stk stop) in
+                let v2 := (asm_sem env stk stop) in 
+                  let r := v1 - v2 in
+                    (asm_sem env stk (Comp r l'))
+  
+  | ifThen l1 l2 => let c := (asm_sem env stk stop) in
+                      match c with
+                      | 0 => (asm_sem env stk (Comp _ l2))
+                      | _ => (asm_sem env stk (Comp _ l1))
+                      end                                                    _
+  | _ => StackError _
   end.
+  
 
 (* depuis son état initial (demandant d'évaluer e dans une pile vide),
    le résultat supposé de la machine est la valeur attendue *)

@@ -59,6 +59,7 @@ rule token = parse
 |       "if"                    { IF }
 |       "then"                  { THEN }
 |       "else"                  { ELSE }
+|       "elsif"                 { ELSIF }
 
 |       '='                     { EQ }
 |       "!="                    { NE }

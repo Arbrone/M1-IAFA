@@ -67,6 +67,7 @@ let rec make_when f v ws =
 %token IF
 %token THEN
 %token ELSE
+%token  ELSIF
 %token EQ
 %token NE
 %token GT
@@ -120,15 +121,6 @@ opt_statements:
 		{ NOP }
 |	statement opt_statements
 		{ SEQ ($1, $2) }
-
-|	IF condition THEN opt_statements END opt_statements
-        {
-			IF_THEN($2, $4, $6)
-        }
-|	ELSE opt_statements
-        {
-			NOP
-        }
 ;
 
 
@@ -144,6 +136,17 @@ statement:
 		{
 			SET_VAR (declare_var $1, $3)
 		}
+        /* IF condition THEN opt_statements   END */
+                
+|	IF condition THEN opt_statements END
+        {
+			IF_THEN($2,$4,NOP)
+        }
+
+|	IF condition THEN opt_statements ELSE opt_statements END
+        {
+			IF_THEN($2,$4,$6)
+        }
 ;
 
 

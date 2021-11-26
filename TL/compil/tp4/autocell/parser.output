@@ -12,11 +12,11 @@
 
    7  opt_statements :
    8                 | statement opt_statements
-   9                 | IF condition THEN opt_statements END opt_statements
-  10                 | ELSE opt_statements
 
-  11  statement : cell ASSIGN expression
-  12            | ID ASSIGN expression
+   9  statement : cell ASSIGN expression
+  10            | ID ASSIGN expression
+  11            | IF condition THEN opt_statements END
+  12            | IF condition THEN opt_statements ELSE opt_statements END
 
   13  cell : LBRACKET INT COMMA INT RBRACKET
 
@@ -158,13 +158,12 @@ state 14
 
 	LBRACKET  shift 18
 	IF  shift 19
-	ELSE  shift 20
-	ID  shift 21
+	ID  shift 20
 	EOF  reduce 7
 
-	opt_statements  goto 22
-	statement  goto 23
-	cell  goto 24
+	opt_statements  goto 21
+	statement  goto 22
+	cell  goto 23
 
 
 state 15
@@ -173,13 +172,13 @@ state 15
 	ID  shift 7
 	.  error
 
-	field  goto 25
+	field  goto 24
 
 
 state 16
 	field : ID OF INT . DOT_DOT INT  (6)
 
-	DOT_DOT  shift 26
+	DOT_DOT  shift 25
 	.  error
 
 
@@ -192,178 +191,156 @@ state 17
 state 18
 	cell : LBRACKET . INT COMMA INT RBRACKET  (13)
 
-	INT  shift 27
+	INT  shift 26
 	.  error
 
 
 state 19
-	opt_statements : IF . condition THEN opt_statements END opt_statements  (9)
+	statement : IF . condition THEN opt_statements END  (11)
+	statement : IF . condition THEN opt_statements ELSE opt_statements END  (12)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	condition  goto 33
-	cell  goto 34
-	expression  goto 35
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
+	cell  goto 32
+	expression  goto 33
+	condition  goto 34
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
 
 
 state 20
-	opt_statements : ELSE . opt_statements  (10)
-	opt_statements : .  (7)
+	statement : ID . ASSIGN expression  (10)
 
-	LBRACKET  shift 18
-	IF  shift 19
-	ELSE  shift 20
-	ID  shift 21
-	EOF  reduce 7
-	END  reduce 7
-
-	opt_statements  goto 39
-	statement  goto 23
-	cell  goto 24
+	ASSIGN  shift 38
+	.  error
 
 
 state 21
-	statement : ID . ASSIGN expression  (12)
+	program : INT DIMENSIONS OF config END opt_statements . EOF  (1)
 
-	ASSIGN  shift 40
+	EOF  shift 39
 	.  error
 
 
 state 22
-	program : INT DIMENSIONS OF config END opt_statements . EOF  (1)
-
-	EOF  shift 41
-	.  error
-
-
-state 23
 	opt_statements : statement . opt_statements  (8)
 	opt_statements : .  (7)
 
 	LBRACKET  shift 18
 	IF  shift 19
-	ELSE  shift 20
-	ID  shift 21
+	ID  shift 20
 	EOF  reduce 7
 	END  reduce 7
+	ELSE  reduce 7
 
-	opt_statements  goto 42
-	statement  goto 23
-	cell  goto 24
+	opt_statements  goto 40
+	statement  goto 22
+	cell  goto 23
 
 
-state 24
-	statement : cell . ASSIGN expression  (11)
+state 23
+	statement : cell . ASSIGN expression  (9)
 
-	ASSIGN  shift 43
+	ASSIGN  shift 41
 	.  error
 
 
-state 25
+state 24
 	fields : fields COMMA field .  (5)
 
 	.  reduce 5
 
 
-state 26
+state 25
 	field : ID OF INT DOT_DOT . INT  (6)
 
-	INT  shift 44
+	INT  shift 42
+	.  error
+
+
+state 26
+	cell : LBRACKET INT . COMMA INT RBRACKET  (13)
+
+	COMMA  shift 43
 	.  error
 
 
 state 27
-	cell : LBRACKET INT . COMMA INT RBRACKET  (13)
-
-	COMMA  shift 45
-	.  error
-
-
-state 28
 	atomic : LPARENT . expression RPARENT  (18)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	cell  goto 34
-	expression  goto 46
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
+	cell  goto 32
+	expression  goto 44
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
 
 
-state 29
+state 28
 	value : ADD . atomic  (19)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	cell  goto 34
-	atomic  goto 47
-	value  goto 37
+	cell  goto 32
+	atomic  goto 45
+	value  goto 36
 
 
-state 30
+state 29
 	value : SUB . atomic  (20)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	cell  goto 34
-	atomic  goto 48
-	value  goto 37
+	cell  goto 32
+	atomic  goto 46
+	value  goto 36
 
 
-state 31
+state 30
 	atomic : ID .  (17)
 
 	.  reduce 17
 
 
-state 32
+state 31
 	atomic : INT .  (16)
 
 	.  reduce 16
 
 
-state 33
-	opt_statements : IF condition . THEN opt_statements END opt_statements  (9)
-
-	THEN  shift 49
-	.  error
-
-
-state 34
+state 32
 	atomic : cell .  (15)
 
 	.  reduce 15
 
 
-state 35
+state 33
 	expression : expression . ADD lower  (26)
 	expression : expression . SUB lower  (27)
 	condition : expression . EQ expression  (28)
@@ -373,26 +350,34 @@ state 35
 	condition : expression . LT expression  (32)
 	condition : expression . LE expression  (33)
 
-	ADD  shift 50
-	SUB  shift 51
-	EQ  shift 52
-	NE  shift 53
-	GT  shift 54
-	GE  shift 55
-	LT  shift 56
-	LE  shift 57
+	ADD  shift 47
+	SUB  shift 48
+	EQ  shift 49
+	NE  shift 50
+	GT  shift 51
+	GE  shift 52
+	LT  shift 53
+	LE  shift 54
 	.  error
 
 
-state 36
+state 34
+	statement : IF condition . THEN opt_statements END  (11)
+	statement : IF condition . THEN opt_statements ELSE opt_statements END  (12)
+
+	THEN  shift 55
+	.  error
+
+
+state 35
 	lower : atomic .  (21)
 	lower : atomic . MUL lower  (22)
 	lower : atomic . DIV lower  (23)
 	lower : atomic . MOD lower  (24)
 
-	MUL  shift 58
-	DIV  shift 59
-	MOD  shift 60
+	MUL  shift 56
+	DIV  shift 57
+	MOD  shift 58
 	EOF  reduce 21
 	END  reduce 21
 	LBRACKET  reduce 21
@@ -411,483 +396,491 @@ state 36
 	ID  reduce 21
 
 
-state 37
+state 36
 	atomic : value .  (14)
 
 	.  reduce 14
 
 
-state 38
+state 37
 	expression : lower .  (25)
 
 	.  reduce 25
 
 
-state 39
-	opt_statements : ELSE opt_statements .  (10)
-
-	.  reduce 10
-
-
-state 40
-	statement : ID ASSIGN . expression  (12)
+state 38
+	statement : ID ASSIGN . expression  (10)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	cell  goto 34
-	expression  goto 61
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
+	cell  goto 32
+	expression  goto 59
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
 
 
-state 41
+state 39
 	program : INT DIMENSIONS OF config END opt_statements EOF .  (1)
 
 	.  reduce 1
 
 
-state 42
+state 40
 	opt_statements : statement opt_statements .  (8)
 
 	.  reduce 8
 
 
-state 43
-	statement : cell ASSIGN . expression  (11)
+state 41
+	statement : cell ASSIGN . expression  (9)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	cell  goto 34
-	expression  goto 62
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
+	cell  goto 32
+	expression  goto 60
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
 
 
-state 44
+state 42
 	field : ID OF INT DOT_DOT INT .  (6)
 
 	.  reduce 6
 
 
-state 45
+state 43
 	cell : LBRACKET INT COMMA . INT RBRACKET  (13)
 
-	INT  shift 63
+	INT  shift 61
 	.  error
 
 
-state 46
+state 44
 	atomic : LPARENT expression . RPARENT  (18)
 	expression : expression . ADD lower  (26)
 	expression : expression . SUB lower  (27)
 
-	RPARENT  shift 64
-	ADD  shift 50
-	SUB  shift 51
+	RPARENT  shift 62
+	ADD  shift 47
+	SUB  shift 48
 	.  error
 
 
-state 47
+state 45
 	value : ADD atomic .  (19)
 
 	.  reduce 19
 
 
-state 48
+state 46
 	value : SUB atomic .  (20)
 
 	.  reduce 20
 
 
+state 47
+	expression : expression ADD . lower  (26)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	atomic  goto 35
+	value  goto 36
+	lower  goto 63
+
+
+state 48
+	expression : expression SUB . lower  (27)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	atomic  goto 35
+	value  goto 36
+	lower  goto 64
+
+
 state 49
-	opt_statements : IF condition THEN . opt_statements END opt_statements  (9)
+	condition : expression EQ . expression  (28)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	expression  goto 65
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
+
+
+state 50
+	condition : expression NE . expression  (29)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	expression  goto 66
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
+
+
+state 51
+	condition : expression GT . expression  (30)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	expression  goto 67
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
+
+
+state 52
+	condition : expression GE . expression  (31)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	expression  goto 68
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
+
+
+state 53
+	condition : expression LT . expression  (32)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	expression  goto 69
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
+
+
+state 54
+	condition : expression LE . expression  (33)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	expression  goto 70
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
+
+
+state 55
+	statement : IF condition THEN . opt_statements END  (11)
+	statement : IF condition THEN . opt_statements ELSE opt_statements END  (12)
 	opt_statements : .  (7)
 
 	LBRACKET  shift 18
 	IF  shift 19
-	ELSE  shift 20
-	ID  shift 21
+	ID  shift 20
 	END  reduce 7
+	ELSE  reduce 7
 
-	opt_statements  goto 65
-	statement  goto 23
-	cell  goto 24
-
-
-state 50
-	expression : expression ADD . lower  (26)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	atomic  goto 36
-	value  goto 37
-	lower  goto 66
-
-
-state 51
-	expression : expression SUB . lower  (27)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	atomic  goto 36
-	value  goto 37
-	lower  goto 67
-
-
-state 52
-	condition : expression EQ . expression  (28)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	expression  goto 68
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
-
-
-state 53
-	condition : expression NE . expression  (29)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	expression  goto 69
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
-
-
-state 54
-	condition : expression GT . expression  (30)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	expression  goto 70
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
-
-
-state 55
-	condition : expression GE . expression  (31)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	expression  goto 71
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
+	opt_statements  goto 71
+	statement  goto 22
+	cell  goto 23
 
 
 state 56
-	condition : expression LT . expression  (32)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	expression  goto 72
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
-
-
-state 57
-	condition : expression LE . expression  (33)
-
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	expression  goto 73
-	atomic  goto 36
-	value  goto 37
-	lower  goto 38
-
-
-state 58
 	lower : atomic MUL . lower  (22)
 
 	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
 
-	cell  goto 34
-	atomic  goto 36
-	value  goto 37
+	cell  goto 32
+	atomic  goto 35
+	value  goto 36
+	lower  goto 72
+
+
+state 57
+	lower : atomic DIV . lower  (23)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	atomic  goto 35
+	value  goto 36
+	lower  goto 73
+
+
+state 58
+	lower : atomic MOD . lower  (24)
+
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
+	.  error
+
+	cell  goto 32
+	atomic  goto 35
+	value  goto 36
 	lower  goto 74
 
 
 state 59
-	lower : atomic DIV . lower  (23)
+	statement : ID ASSIGN expression .  (10)
+	expression : expression . ADD lower  (26)
+	expression : expression . SUB lower  (27)
 
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	atomic  goto 36
-	value  goto 37
-	lower  goto 75
+	ADD  shift 47
+	SUB  shift 48
+	EOF  reduce 10
+	END  reduce 10
+	LBRACKET  reduce 10
+	IF  reduce 10
+	ELSE  reduce 10
+	ID  reduce 10
 
 
 state 60
-	lower : atomic MOD . lower  (24)
+	statement : cell ASSIGN expression .  (9)
+	expression : expression . ADD lower  (26)
+	expression : expression . SUB lower  (27)
 
-	LBRACKET  shift 18
-	LPARENT  shift 28
-	ADD  shift 29
-	SUB  shift 30
-	ID  shift 31
-	INT  shift 32
-	.  error
-
-	cell  goto 34
-	atomic  goto 36
-	value  goto 37
-	lower  goto 76
+	ADD  shift 47
+	SUB  shift 48
+	EOF  reduce 9
+	END  reduce 9
+	LBRACKET  reduce 9
+	IF  reduce 9
+	ELSE  reduce 9
+	ID  reduce 9
 
 
 state 61
-	statement : ID ASSIGN expression .  (12)
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-
-	ADD  shift 50
-	SUB  shift 51
-	EOF  reduce 12
-	END  reduce 12
-	LBRACKET  reduce 12
-	IF  reduce 12
-	ELSE  reduce 12
-	ID  reduce 12
-
-
-state 62
-	statement : cell ASSIGN expression .  (11)
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-
-	ADD  shift 50
-	SUB  shift 51
-	EOF  reduce 11
-	END  reduce 11
-	LBRACKET  reduce 11
-	IF  reduce 11
-	ELSE  reduce 11
-	ID  reduce 11
-
-
-state 63
 	cell : LBRACKET INT COMMA INT . RBRACKET  (13)
 
-	RBRACKET  shift 77
+	RBRACKET  shift 75
 	.  error
 
 
-state 64
+state 62
 	atomic : LPARENT expression RPARENT .  (18)
 
 	.  reduce 18
 
 
-state 65
-	opt_statements : IF condition THEN opt_statements . END opt_statements  (9)
-
-	END  shift 78
-	.  error
-
-
-state 66
+state 63
 	expression : expression ADD lower .  (26)
 
 	.  reduce 26
 
 
-state 67
+state 64
 	expression : expression SUB lower .  (27)
 
 	.  reduce 27
 
 
-state 68
+state 65
 	expression : expression . ADD lower  (26)
 	expression : expression . SUB lower  (27)
 	condition : expression EQ expression .  (28)
 
-	ADD  shift 50
-	SUB  shift 51
+	ADD  shift 47
+	SUB  shift 48
 	THEN  reduce 28
+
+
+state 66
+	expression : expression . ADD lower  (26)
+	expression : expression . SUB lower  (27)
+	condition : expression NE expression .  (29)
+
+	ADD  shift 47
+	SUB  shift 48
+	THEN  reduce 29
+
+
+state 67
+	expression : expression . ADD lower  (26)
+	expression : expression . SUB lower  (27)
+	condition : expression GT expression .  (30)
+
+	ADD  shift 47
+	SUB  shift 48
+	THEN  reduce 30
+
+
+state 68
+	expression : expression . ADD lower  (26)
+	expression : expression . SUB lower  (27)
+	condition : expression GE expression .  (31)
+
+	ADD  shift 47
+	SUB  shift 48
+	THEN  reduce 31
 
 
 state 69
 	expression : expression . ADD lower  (26)
 	expression : expression . SUB lower  (27)
-	condition : expression NE expression .  (29)
+	condition : expression LT expression .  (32)
 
-	ADD  shift 50
-	SUB  shift 51
-	THEN  reduce 29
+	ADD  shift 47
+	SUB  shift 48
+	THEN  reduce 32
 
 
 state 70
 	expression : expression . ADD lower  (26)
 	expression : expression . SUB lower  (27)
-	condition : expression GT expression .  (30)
-
-	ADD  shift 50
-	SUB  shift 51
-	THEN  reduce 30
-
-
-state 71
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression GE expression .  (31)
-
-	ADD  shift 50
-	SUB  shift 51
-	THEN  reduce 31
-
-
-state 72
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression LT expression .  (32)
-
-	ADD  shift 50
-	SUB  shift 51
-	THEN  reduce 32
-
-
-state 73
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
 	condition : expression LE expression .  (33)
 
-	ADD  shift 50
-	SUB  shift 51
+	ADD  shift 47
+	SUB  shift 48
 	THEN  reduce 33
 
 
-state 74
+state 71
+	statement : IF condition THEN opt_statements . END  (11)
+	statement : IF condition THEN opt_statements . ELSE opt_statements END  (12)
+
+	END  shift 76
+	ELSE  shift 77
+	.  error
+
+
+state 72
 	lower : atomic MUL lower .  (22)
 
 	.  reduce 22
 
 
-state 75
+state 73
 	lower : atomic DIV lower .  (23)
 
 	.  reduce 23
 
 
-state 76
+state 74
 	lower : atomic MOD lower .  (24)
 
 	.  reduce 24
 
 
-state 77
+state 75
 	cell : LBRACKET INT COMMA INT RBRACKET .  (13)
 
 	.  reduce 13
 
 
-state 78
-	opt_statements : IF condition THEN opt_statements END . opt_statements  (9)
+state 76
+	statement : IF condition THEN opt_statements END .  (11)
+
+	.  reduce 11
+
+
+state 77
+	statement : IF condition THEN opt_statements ELSE . opt_statements END  (12)
 	opt_statements : .  (7)
 
 	LBRACKET  shift 18
 	IF  shift 19
-	ELSE  shift 20
-	ID  shift 21
-	EOF  reduce 7
+	ID  shift 20
 	END  reduce 7
 
-	opt_statements  goto 79
-	statement  goto 23
-	cell  goto 24
+	opt_statements  goto 78
+	statement  goto 22
+	cell  goto 23
+
+
+state 78
+	statement : IF condition THEN opt_statements ELSE opt_statements . END  (12)
+
+	END  shift 79
+	.  error
 
 
 state 79
-	opt_statements : IF condition THEN opt_statements END opt_statements .  (9)
+	statement : IF condition THEN opt_statements ELSE opt_statements END .  (12)
 
-	.  reduce 9
+	.  reduce 12
 
 
-31 terminals, 14 nonterminals
+32 terminals, 14 nonterminals
 35 grammar rules, 80 states
