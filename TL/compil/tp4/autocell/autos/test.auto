@@ -1,19 +1,15 @@
-i f
-[ 0 ,
-0] = 1 then
-i f
-sum < 2 then
-[ 0 ,
-0] := 0
-e l s i f
-sum > 3 then
-[ 0 ,
-0] := 0
-end
-e l s e
-i f
-sum = 3 then
-[ 0 ,
-0] := 1
-end
+2 dimensions of 0..1 end
+
+sum := 0
+
+if [0,0] = 1 then
+	if sum < 2 then
+		[0,0] := 0
+	elsif sum > 3 then
+		[0,0] := 0
+	end
+else
+	if sum = 3 then
+		[0,0] := 1
+	end
 end

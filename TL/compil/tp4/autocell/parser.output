@@ -17,35 +17,36 @@
   10            | ID ASSIGN expression
   11            | IF condition THEN opt_statements END
   12            | IF condition THEN opt_statements ELSE opt_statements END
+  13            | IF condition THEN opt_statements ELSIF condition THEN opt_statements END
 
-  13  cell : LBRACKET INT COMMA INT RBRACKET
+  14  cell : LBRACKET INT COMMA INT RBRACKET
 
-  14  atomic : value
-  15         | cell
-  16         | INT
-  17         | ID
-  18         | LPARENT expression RPARENT
+  15  atomic : value
+  16         | cell
+  17         | INT
+  18         | ID
+  19         | LPARENT expression RPARENT
 
-  19  value : ADD atomic
-  20        | SUB atomic
+  20  value : ADD atomic
+  21        | SUB atomic
 
-  21  lower : atomic
-  22        | atomic MUL lower
-  23        | atomic DIV lower
-  24        | atomic MOD lower
+  22  lower : atomic
+  23        | atomic MUL lower
+  24        | atomic DIV lower
+  25        | atomic MOD lower
 
-  25  expression : lower
-  26             | expression ADD lower
-  27             | expression SUB lower
+  26  expression : lower
+  27             | expression ADD lower
+  28             | expression SUB lower
 
-  28  condition : expression EQ expression
-  29            | expression NE expression
-  30            | expression GT expression
-  31            | expression GE expression
-  32            | expression LT expression
-  33            | expression LE expression
+  29  condition : expression EQ expression
+  30            | expression NE expression
+  31            | expression GT expression
+  32            | expression GE expression
+  33            | expression LT expression
+  34            | expression LE expression
 
-  34  %entry% : '\001' program
+  35  %entry% : '\001' program
 
 state 0
 	$accept : . %entry% $end  (0)
@@ -57,7 +58,7 @@ state 0
 
 
 state 1
-	%entry% : '\001' . program  (34)
+	%entry% : '\001' . program  (35)
 
 	INT  shift 3
 	.  error
@@ -79,9 +80,9 @@ state 3
 
 
 state 4
-	%entry% : '\001' program .  (34)
+	%entry% : '\001' program .  (35)
 
-	.  reduce 34
+	.  reduce 35
 
 
 state 5
@@ -189,7 +190,7 @@ state 17
 
 
 state 18
-	cell : LBRACKET . INT COMMA INT RBRACKET  (13)
+	cell : LBRACKET . INT COMMA INT RBRACKET  (14)
 
 	INT  shift 26
 	.  error
@@ -198,6 +199,7 @@ state 18
 state 19
 	statement : IF . condition THEN opt_statements END  (11)
 	statement : IF . condition THEN opt_statements ELSE opt_statements END  (12)
+	statement : IF . condition THEN opt_statements ELSIF condition THEN opt_statements END  (13)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -239,6 +241,7 @@ state 22
 	EOF  reduce 7
 	END  reduce 7
 	ELSE  reduce 7
+	ELSIF  reduce 7
 
 	opt_statements  goto 40
 	statement  goto 22
@@ -266,14 +269,14 @@ state 25
 
 
 state 26
-	cell : LBRACKET INT . COMMA INT RBRACKET  (13)
+	cell : LBRACKET INT . COMMA INT RBRACKET  (14)
 
 	COMMA  shift 43
 	.  error
 
 
 state 27
-	atomic : LPARENT . expression RPARENT  (18)
+	atomic : LPARENT . expression RPARENT  (19)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -291,7 +294,7 @@ state 27
 
 
 state 28
-	value : ADD . atomic  (19)
+	value : ADD . atomic  (20)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -307,7 +310,7 @@ state 28
 
 
 state 29
-	value : SUB . atomic  (20)
+	value : SUB . atomic  (21)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -323,32 +326,32 @@ state 29
 
 
 state 30
-	atomic : ID .  (17)
+	atomic : ID .  (18)
+
+	.  reduce 18
+
+
+state 31
+	atomic : INT .  (17)
 
 	.  reduce 17
 
 
-state 31
-	atomic : INT .  (16)
+state 32
+	atomic : cell .  (16)
 
 	.  reduce 16
 
 
-state 32
-	atomic : cell .  (15)
-
-	.  reduce 15
-
-
 state 33
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression . EQ expression  (28)
-	condition : expression . NE expression  (29)
-	condition : expression . GT expression  (30)
-	condition : expression . GE expression  (31)
-	condition : expression . LT expression  (32)
-	condition : expression . LE expression  (33)
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression . EQ expression  (29)
+	condition : expression . NE expression  (30)
+	condition : expression . GT expression  (31)
+	condition : expression . GE expression  (32)
+	condition : expression . LT expression  (33)
+	condition : expression . LE expression  (34)
 
 	ADD  shift 47
 	SUB  shift 48
@@ -364,48 +367,50 @@ state 33
 state 34
 	statement : IF condition . THEN opt_statements END  (11)
 	statement : IF condition . THEN opt_statements ELSE opt_statements END  (12)
+	statement : IF condition . THEN opt_statements ELSIF condition THEN opt_statements END  (13)
 
 	THEN  shift 55
 	.  error
 
 
 state 35
-	lower : atomic .  (21)
-	lower : atomic . MUL lower  (22)
-	lower : atomic . DIV lower  (23)
-	lower : atomic . MOD lower  (24)
+	lower : atomic .  (22)
+	lower : atomic . MUL lower  (23)
+	lower : atomic . DIV lower  (24)
+	lower : atomic . MOD lower  (25)
 
 	MUL  shift 56
 	DIV  shift 57
 	MOD  shift 58
-	EOF  reduce 21
-	END  reduce 21
-	LBRACKET  reduce 21
-	RPARENT  reduce 21
-	ADD  reduce 21
-	SUB  reduce 21
-	IF  reduce 21
-	THEN  reduce 21
-	ELSE  reduce 21
-	EQ  reduce 21
-	NE  reduce 21
-	GT  reduce 21
-	GE  reduce 21
-	LT  reduce 21
-	LE  reduce 21
-	ID  reduce 21
+	EOF  reduce 22
+	END  reduce 22
+	LBRACKET  reduce 22
+	RPARENT  reduce 22
+	ADD  reduce 22
+	SUB  reduce 22
+	IF  reduce 22
+	THEN  reduce 22
+	ELSE  reduce 22
+	ELSIF  reduce 22
+	EQ  reduce 22
+	NE  reduce 22
+	GT  reduce 22
+	GE  reduce 22
+	LT  reduce 22
+	LE  reduce 22
+	ID  reduce 22
 
 
 state 36
-	atomic : value .  (14)
+	atomic : value .  (15)
 
-	.  reduce 14
+	.  reduce 15
 
 
 state 37
-	expression : lower .  (25)
+	expression : lower .  (26)
 
-	.  reduce 25
+	.  reduce 26
 
 
 state 38
@@ -463,16 +468,16 @@ state 42
 
 
 state 43
-	cell : LBRACKET INT COMMA . INT RBRACKET  (13)
+	cell : LBRACKET INT COMMA . INT RBRACKET  (14)
 
 	INT  shift 61
 	.  error
 
 
 state 44
-	atomic : LPARENT expression . RPARENT  (18)
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
+	atomic : LPARENT expression . RPARENT  (19)
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
 
 	RPARENT  shift 62
 	ADD  shift 47
@@ -481,19 +486,19 @@ state 44
 
 
 state 45
-	value : ADD atomic .  (19)
-
-	.  reduce 19
-
-
-state 46
-	value : SUB atomic .  (20)
+	value : ADD atomic .  (20)
 
 	.  reduce 20
 
 
+state 46
+	value : SUB atomic .  (21)
+
+	.  reduce 21
+
+
 state 47
-	expression : expression ADD . lower  (26)
+	expression : expression ADD . lower  (27)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -510,7 +515,7 @@ state 47
 
 
 state 48
-	expression : expression SUB . lower  (27)
+	expression : expression SUB . lower  (28)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -527,7 +532,7 @@ state 48
 
 
 state 49
-	condition : expression EQ . expression  (28)
+	condition : expression EQ . expression  (29)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -545,7 +550,7 @@ state 49
 
 
 state 50
-	condition : expression NE . expression  (29)
+	condition : expression NE . expression  (30)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -563,7 +568,7 @@ state 50
 
 
 state 51
-	condition : expression GT . expression  (30)
+	condition : expression GT . expression  (31)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -581,7 +586,7 @@ state 51
 
 
 state 52
-	condition : expression GE . expression  (31)
+	condition : expression GE . expression  (32)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -599,7 +604,7 @@ state 52
 
 
 state 53
-	condition : expression LT . expression  (32)
+	condition : expression LT . expression  (33)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -617,7 +622,7 @@ state 53
 
 
 state 54
-	condition : expression LE . expression  (33)
+	condition : expression LE . expression  (34)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -637,6 +642,7 @@ state 54
 state 55
 	statement : IF condition THEN . opt_statements END  (11)
 	statement : IF condition THEN . opt_statements ELSE opt_statements END  (12)
+	statement : IF condition THEN . opt_statements ELSIF condition THEN opt_statements END  (13)
 	opt_statements : .  (7)
 
 	LBRACKET  shift 18
@@ -644,6 +650,7 @@ state 55
 	ID  shift 20
 	END  reduce 7
 	ELSE  reduce 7
+	ELSIF  reduce 7
 
 	opt_statements  goto 71
 	statement  goto 22
@@ -651,7 +658,7 @@ state 55
 
 
 state 56
-	lower : atomic MUL . lower  (22)
+	lower : atomic MUL . lower  (23)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -668,7 +675,7 @@ state 56
 
 
 state 57
-	lower : atomic DIV . lower  (23)
+	lower : atomic DIV . lower  (24)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -685,7 +692,7 @@ state 57
 
 
 state 58
-	lower : atomic MOD . lower  (24)
+	lower : atomic MOD . lower  (25)
 
 	LBRACKET  shift 18
 	LPARENT  shift 27
@@ -703,8 +710,8 @@ state 58
 
 state 59
 	statement : ID ASSIGN expression .  (10)
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
 
 	ADD  shift 47
 	SUB  shift 48
@@ -713,13 +720,14 @@ state 59
 	LBRACKET  reduce 10
 	IF  reduce 10
 	ELSE  reduce 10
+	ELSIF  reduce 10
 	ID  reduce 10
 
 
 state 60
 	statement : cell ASSIGN expression .  (9)
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
 
 	ADD  shift 47
 	SUB  shift 48
@@ -728,125 +736,128 @@ state 60
 	LBRACKET  reduce 9
 	IF  reduce 9
 	ELSE  reduce 9
+	ELSIF  reduce 9
 	ID  reduce 9
 
 
 state 61
-	cell : LBRACKET INT COMMA INT . RBRACKET  (13)
+	cell : LBRACKET INT COMMA INT . RBRACKET  (14)
 
 	RBRACKET  shift 75
 	.  error
 
 
 state 62
-	atomic : LPARENT expression RPARENT .  (18)
+	atomic : LPARENT expression RPARENT .  (19)
 
-	.  reduce 18
+	.  reduce 19
 
 
 state 63
-	expression : expression ADD lower .  (26)
-
-	.  reduce 26
-
-
-state 64
-	expression : expression SUB lower .  (27)
+	expression : expression ADD lower .  (27)
 
 	.  reduce 27
 
 
+state 64
+	expression : expression SUB lower .  (28)
+
+	.  reduce 28
+
+
 state 65
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression EQ expression .  (28)
-
-	ADD  shift 47
-	SUB  shift 48
-	THEN  reduce 28
-
-
-state 66
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression NE expression .  (29)
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression EQ expression .  (29)
 
 	ADD  shift 47
 	SUB  shift 48
 	THEN  reduce 29
 
 
-state 67
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression GT expression .  (30)
+state 66
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression NE expression .  (30)
 
 	ADD  shift 47
 	SUB  shift 48
 	THEN  reduce 30
 
 
-state 68
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression GE expression .  (31)
+state 67
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression GT expression .  (31)
 
 	ADD  shift 47
 	SUB  shift 48
 	THEN  reduce 31
 
 
-state 69
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression LT expression .  (32)
+state 68
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression GE expression .  (32)
 
 	ADD  shift 47
 	SUB  shift 48
 	THEN  reduce 32
 
 
-state 70
-	expression : expression . ADD lower  (26)
-	expression : expression . SUB lower  (27)
-	condition : expression LE expression .  (33)
+state 69
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression LT expression .  (33)
 
 	ADD  shift 47
 	SUB  shift 48
 	THEN  reduce 33
 
 
+state 70
+	expression : expression . ADD lower  (27)
+	expression : expression . SUB lower  (28)
+	condition : expression LE expression .  (34)
+
+	ADD  shift 47
+	SUB  shift 48
+	THEN  reduce 34
+
+
 state 71
 	statement : IF condition THEN opt_statements . END  (11)
 	statement : IF condition THEN opt_statements . ELSE opt_statements END  (12)
+	statement : IF condition THEN opt_statements . ELSIF condition THEN opt_statements END  (13)
 
 	END  shift 76
 	ELSE  shift 77
+	ELSIF  shift 78
 	.  error
 
 
 state 72
-	lower : atomic MUL lower .  (22)
-
-	.  reduce 22
-
-
-state 73
-	lower : atomic DIV lower .  (23)
+	lower : atomic MUL lower .  (23)
 
 	.  reduce 23
 
 
-state 74
-	lower : atomic MOD lower .  (24)
+state 73
+	lower : atomic DIV lower .  (24)
 
 	.  reduce 24
 
 
-state 75
-	cell : LBRACKET INT COMMA INT RBRACKET .  (13)
+state 74
+	lower : atomic MOD lower .  (25)
 
-	.  reduce 13
+	.  reduce 25
+
+
+state 75
+	cell : LBRACKET INT COMMA INT RBRACKET .  (14)
+
+	.  reduce 14
 
 
 state 76
@@ -864,23 +875,76 @@ state 77
 	ID  shift 20
 	END  reduce 7
 
-	opt_statements  goto 78
+	opt_statements  goto 79
 	statement  goto 22
 	cell  goto 23
 
 
 state 78
-	statement : IF condition THEN opt_statements ELSE opt_statements . END  (12)
+	statement : IF condition THEN opt_statements ELSIF . condition THEN opt_statements END  (13)
 
-	END  shift 79
+	LBRACKET  shift 18
+	LPARENT  shift 27
+	ADD  shift 28
+	SUB  shift 29
+	ID  shift 30
+	INT  shift 31
 	.  error
+
+	cell  goto 32
+	expression  goto 33
+	condition  goto 80
+	atomic  goto 35
+	value  goto 36
+	lower  goto 37
 
 
 state 79
+	statement : IF condition THEN opt_statements ELSE opt_statements . END  (12)
+
+	END  shift 81
+	.  error
+
+
+state 80
+	statement : IF condition THEN opt_statements ELSIF condition . THEN opt_statements END  (13)
+
+	THEN  shift 82
+	.  error
+
+
+state 81
 	statement : IF condition THEN opt_statements ELSE opt_statements END .  (12)
 
 	.  reduce 12
 
 
+state 82
+	statement : IF condition THEN opt_statements ELSIF condition THEN . opt_statements END  (13)
+	opt_statements : .  (7)
+
+	LBRACKET  shift 18
+	IF  shift 19
+	ID  shift 20
+	END  reduce 7
+
+	opt_statements  goto 83
+	statement  goto 22
+	cell  goto 23
+
+
+state 83
+	statement : IF condition THEN opt_statements ELSIF condition THEN opt_statements . END  (13)
+
+	END  shift 84
+	.  error
+
+
+state 84
+	statement : IF condition THEN opt_statements ELSIF condition THEN opt_statements END .  (13)
+
+	.  reduce 13
+
+
 32 terminals, 14 nonterminals
-35 grammar rules, 80 states
+36 grammar rules, 85 states
