@@ -11,7 +11,7 @@ size = comm.Get_size()
 
 if rank == 0:
     start_time = time.time()
-    nb = [1000010000]
+    nb = [100001]
 else:
     nb = {}
 

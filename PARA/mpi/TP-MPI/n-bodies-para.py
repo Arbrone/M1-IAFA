@@ -122,46 +122,112 @@ def init_world(n):
                 speedx=0, speedy=0, weight=1e6*solarmass))
     return data
 
+#########################################
+#										#
+#			   SELF FUNC     			#
+#										#
+#########################################
 
-def sum_force(list_forces):
-    total = (0, 0)
-    for i in range(len(list_forces)):
-        total = (total[0]+list_forces[i][0], total[1]+list_forces[i][1])
-    return total
+def sum_forces(list_forces):
+	total = (0,0)
+	for i in range(len(list_forces)):
+		total = (total[0]+list_forces[i][0], total[1]+list_forces[i][1])
+	return total
 
+def update_world(world, debut, fin):
+    res = world
+    for i in range(debut, fin):
+        force = []
+        for j in world:
+            force.append(interaction(world[i], j))
+        res[i] = update(world[i],sum_forces(force))
+    return res
+
+def calc_force(world, debut, fin,nbbodies):
+    for i in range(debut, fin):
+        force = []
+        for j in world:
+            force.append(interaction(world[i], j))
+        res[i] = update(world[i],sum_forces(force))
+    return res
+
+def work_range(rank, size, nbbodies):
+    debut = rank * nbbodies//size
+    if rank == size-1:
+        fin = nbbodies
+    else:
+        fin = debut + nbbodies//size
+    return(debut, fin)
+
+#########################################
+#										#
+#			    PARA BLOCK  			#
+#										#
+#########################################
 
 nbbodies = int(sys.argv[1])
 NBSTEPS = int(sys.argv[2])
 
-# à modifier si on veut que le monde créé soit différent à chaque fois
-random.seed(0)
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
 
 
-plt.draw()
-plt.show(block=False)
-# une pause de 2 secondes, juste pour voir que ça s'affiche bien
-# on doit l'enlever dès que ça marche ;)
-# plt.pause(2)
+if rank == 0:
+    # à modifier si on veut que le monde créé soit différent à chaque fois
+    random.seed(0)
 
-# here to start the code...
-world = init_world(nbbodies)
+    plt.draw()
+    plt.show(block=False)
+    world = init_world(nbbodies)
+else:
+    world = {}
 
-start_time = time.time()
+debut, fin = work_range(rank, size, nbbodies)
 
-for step in range(NBSTEPS):
-    cpt = 0
-    for i in world:
-        force = []
-        for j in world:
-            force.append(interaction(i, j))
-        world[cpt] = update(i, sum_force(force))
-        print(sum_force(force))
-        cpt += 1
-    displayPlot(world)
+print("-------------------------")
+print("rank : ",rank)
+print("debut : ",debut)
+print("fin : ",fin)
+print("world len : ", len(world))
+print("-------------------------")
+
+# mettre tout le tableau monde à 0
+# faire la somme en ajoutant 
+
+for i in range(NBSTEPS):
+
+    world = comm.bcast(world,root=0)
+    updated_local = update_world(world, debut, fin)
+
+    if rank == 0:
+        for j in range(size):
+            get_req = comm.send(world,dest=0,tag=11)
+        # recevoir les nouveaux mondes
+        # afficher
+        pass
+    else:
+        # envoyer local world
+
+        # synchroniser les threads
+         
+        # recevoir nouveau monde 
+        pass
 
 
-end_time = time.time()
-sig = signature(world)
+local_data = world[debut:fin+1]
 
-print("Time spend = ", end_time-start_time)
-print("world signature : ", sig)
+    # envoi des resultats de calculs sur le rank 0
+send_req = comm.send(world,dest=0,tag=11)
+
+
+#afficher le nouveau world sur le rank 0
+if rank == 0:
+    for i in range(NBSTEPS):
+        req = comm.irecv(MPI.ANY_SOURCE,tag=11)
+        world = req.wait()
+        displayPlot(world)
+    
+    sig = signature(world)
+    print("world signature : ", sig)
+#recommencer tant que step != NBSTEPS
